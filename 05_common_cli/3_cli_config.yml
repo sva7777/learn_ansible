@@ -9,4 +9,4 @@
 
     - name: Debug registred var
       debug:
-        var: command_output.stdout_lines
+        var: command_output.changed
