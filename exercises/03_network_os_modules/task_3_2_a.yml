@@ -1,0 +1,18 @@
+---
+
+- name: task 3.2
+  hosts: r1
+  gather_facts: false
+
+  tasks:
+
+    - name: Gather facts
+      ios_facts:
+        gather_subset: all
+
+    - name: Write into file
+      copy:
+        content: "{{ansible_net_interfaces | to_nice_yaml}}"
+        dest: "all_facts/{{inventory_hostname}}_intf_facts.yaml"
+
+

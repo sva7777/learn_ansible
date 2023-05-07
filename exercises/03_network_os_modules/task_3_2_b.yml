@@ -1,0 +1,22 @@
+---
+
+- name: task 3.2
+  hosts: r1
+  gather_facts: false
+
+  tasks:
+
+    - name: Gather facts
+      ios_facts:
+        gather_subset: all
+
+    - name: ipv6 interfaces
+      ios_command:
+        commands: sh ipv6 int br
+      register: show_result
+
+    - name: debug
+      debug: var=show_result
+      when: ansible_net_all_ipv6_addresses | bool
+
+

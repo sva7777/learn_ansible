@@ -1,0 +1,20 @@
+---
+
+- name: task 3.1
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Config line vty
+      ios_command:
+        commands: 
+         - sh arp
+         - sh ip int br
+      register: result
+
+    - name: Show arp result
+      debug: var=result.stdout_lines[0]
+
+    - name: Show interface results
+      debug: var=result.stdout_lines[1]

@@ -1,0 +1,13 @@
+---
+
+- name: task 3.2
+  hosts: r1
+  gather_facts: true
+
+  tasks:
+
+    - name: Show interfaces
+      debug: var=ansible_net_interfaces
+
+
+
